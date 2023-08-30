@@ -22,3 +22,12 @@ body {
     padding-inline: auto;
   }
 }
+
+.image-buttons {
+  display: none;
+  transform: all 1s;
+}
+
+.item:hover .image-buttons{
+  display: flex;
+}
