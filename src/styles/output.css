@@ -922,6 +922,7 @@ body {
   main {
     padding-inline: 30px;
     padding-top: 30px;
+    gap: 4rem
   }
 }
 

@@ -16,7 +16,7 @@ async function renderData(url) {
     const result = await response.json();
     result.photos.forEach((photo) => {
       photos.innerHTML += `
-      <div class="relative m-4 h-fit w-fit bg-slate-900 rounded-lg shadow-xl">
+      <div class="relative m-4 w-full bg-slate-900 rounded-lg shadow-xl">
       <img  
         loading="lazy"
         src="${photo.src.original}"
@@ -28,7 +28,6 @@ async function renderData(url) {
             ${photo.src.xl}?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;lazy=load   800w,
             ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;lazy=load 1200w,
           "
-          sizes="(max-width: 250px) calc((100vw - 30px - 15px) / 2), (max-width: 900px) calc((100vw - 30px - 15px) / 3),calc((1600px - 160px - 60px) / 4)"
         alt="${photo.alt}"
         class="object-cover rounded-lg"
       />
