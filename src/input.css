@@ -17,10 +17,8 @@ body {
   }
 }
 
-@media (min-width: 651px) {
-  main {
-    padding-inline: auto;
-  }
+main {
+  columns: 5 140px;
 }
 
 .image-buttons {
