@@ -927,13 +927,9 @@ body {
 }
 
 @media (min-width: 100px) {
-  nav {
-    padding-inline: 30px;
-  }
-
   main {
-    -moz-columns: 3 240px;
-         columns: 3 240px;
+    -moz-columns: 3 140px;
+         columns: 3 140px;
     gap: 2rem;
   }
 }
