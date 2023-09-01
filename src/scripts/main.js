@@ -14,10 +14,9 @@ async function renderData(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    let str = "";
     result.photos.forEach((photo) => {
-      str += `
-      <div class="relative m-4 h-fit rounded-lg shadow-xl">
+      photos.innerHTML += `
+      <div class="relative m-4 h-fit w-fit bg-slate-900 rounded-lg shadow-xl">
       <img  
         loading="lazy"
         src="${photo.src.original}"
@@ -36,7 +35,6 @@ async function renderData(url) {
     </div>
       `;
     });
-    photos.innerHTML += str;
     if (url === Home_URL) Home_URL = result.next_page;
     else search_URL = result.next_page;
     url = result.next_page;

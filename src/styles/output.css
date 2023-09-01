@@ -586,10 +586,6 @@ video {
   margin: 1rem;
 }
 
-.m-auto {
-  margin: auto;
-}
-
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -606,6 +602,10 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .flex {
@@ -637,10 +637,6 @@ video {
   min-height: 500px;
 }
 
-.min-h-screen {
-  min-height: 100vh;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -662,24 +658,20 @@ video {
   width: 100%;
 }
 
-.w-11\/12 {
-  width: 91.666667%;
-}
-
-.w-\[full\] {
-  width: full;
-}
-
-.w-\[95\%\] {
-  width: 95%;
-}
-
 .max-w-\[1600px\] {
   max-width: 1600px;
 }
 
 .max-w-\[630px\] {
   max-width: 630px;
+}
+
+.max-w-\[\] {
+  max-width: ;
+}
+
+.max-w-\[95\] {
+  max-width: 95;
 }
 
 .max-w-\[95\%\] {
@@ -698,12 +690,28 @@ video {
   cursor: pointer;
 }
 
-.flex-row-reverse {
-  flex-direction: row-reverse;
+.columns-5 {
+  -moz-columns: 5;
+       columns: 5;
 }
 
-.flex-col {
-  flex-direction: column;
+.columns-xs {
+  -moz-columns: 20rem;
+       columns: 20rem;
+}
+
+.columns-\[5340\] {
+  -moz-columns: 5340;
+       columns: 5340;
+}
+
+.columns-\[5\2c 340\] {
+  -moz-columns: 5,340;
+       columns: 5,340;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
 .flex-wrap {
@@ -722,10 +730,6 @@ video {
   justify-content: space-between;
 }
 
-.justify-around {
-  justify-content: space-around;
-}
-
 .gap-2 {
   gap: 0.5rem;
 }
@@ -734,17 +738,9 @@ video {
   gap: 1rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .gap-x-8 {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .rounded-lg {
@@ -775,14 +771,29 @@ video {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-slate-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {
