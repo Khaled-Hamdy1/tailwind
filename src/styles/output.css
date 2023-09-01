@@ -596,6 +596,10 @@ video {
   margin-right: auto;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
@@ -704,10 +708,6 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
-}
-
-.gap-4 {
-  gap: 1rem;
 }
 
 .gap-x-8 {
@@ -920,15 +920,14 @@ body {
   }
 
   main {
-    padding-inline: 30px;
-    padding-top: 30px;
     gap: 4rem
   }
 }
 
 main {
-  -moz-columns: 5 140px;
-       columns: 5 140px;
+  -moz-columns: 5 340px;
+       columns: 5 340px;
+  gap: 15px;
 }
 
 .image-buttons {

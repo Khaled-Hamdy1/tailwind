@@ -12,14 +12,13 @@ body {
     padding-inline: 30px;
   }
   main {
-    padding-inline: 30px;
-    padding-top: 30px;
     gap: 4rem
   }
 }
 
 main {
-  columns: 5 140px;
+  columns: 5 340px; 
+  gap: 15px;
 }
 
 .image-buttons {
