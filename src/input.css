@@ -12,13 +12,19 @@ body {
     padding-inline: 30px;
   }
   main {
-    gap: 4rem
+    columns: 5 340px;
+    gap: 15px;
   }
 }
 
-main {
-  columns: 5 340px; 
-  gap: 15px;
+@media (min-width: 100px) {
+  nav {
+    padding-inline: 30px;
+  }
+  main {
+    columns: 3 240px;
+    gap: 2rem;
+  }
 }
 
 .image-buttons {
@@ -26,6 +32,6 @@ main {
   transform: all 1s;
 }
 
-.item:hover .image-buttons{
+.item:hover .image-buttons {
   display: flex;
 }
