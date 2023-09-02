@@ -14,30 +14,49 @@ async function renderData(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    result.photos.forEach((photo) => {
+    result.photos.forEach((photo,idx) => {
       photos.innerHTML += `
-      <div class="relative mb-4 w-full bg-slate-900 rounded-lg shadow-xl">
-      <img  
-        loading="lazy"
-        src="${photo.src.original}"
-        srcset="
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=150&amp;lazy=load   150w,
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=300&amp;lazy=load   300w,
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;lazy=load   400w,
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=600&amp;lazy=load   600w,
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;lazy=load   800w,
-            ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;lazy=load 1200w,
-          "
-        alt="${photo.alt}"
-        class="object-cover rounded-lg"
-      />
-    </div>
+      <div class="relative mb-4 w-fit bg-slate-900 rounded-lg shadow-xl item">
+        <div
+          class="flex gap-2 absolute flex-row-reverse right-2 top-2 image-buttons"
+        >
+          <button
+          onclick = pressLike(${photo.id})
+            class="w-10 h-10 flex items-center justify-center rounded-lg bg-white text-lg like-btn"
+          >
+            <i class="fa-regular fa-heart like-icon"></i>
+          </button>
+        </div>
+        <div>
+          <img  
+          loading="lazy"
+          src="${photo.src.original}"
+          srcset="
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=150&amp;lazy=load   150w,
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=300&amp;lazy=load   300w,
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;lazy=load   400w,
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=600&amp;lazy=load   600w,
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;lazy=load   800w,
+              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;lazy=load 1200w,
+            "
+          alt="${photo.alt}"
+          class="object-cover rounded-lg"
+          />
+        </div>
+        <div>
+          <h1
+            class="absolute left-1 bottom-2 capitalize text-white font-semibold text-sm image-buttons"
+          >
+            ${photo.photographer}
+          </h1>
+        </div>
+      </div>
       `;
     });
     if (url === Home_URL) Home_URL = result.next_page;
     else search_URL = result.next_page;
     url = result.next_page;
-    console.log(search_URL);
+    // console.log(JSON.stringify(result, null, 1));
   } catch (error) {
     console.error(error);
   } finally {
@@ -74,3 +93,10 @@ searchBtn.addEventListener("click", (e) => {
   } else renderData(search_URL);
   console.log(searchInput.value);
 });
+//////////////////////like button/////////////////////////////
+const favList = localStorage.getItem("favList")||[];
+
+function pressLike(id) {
+  if(favList.includes(id)) favList.splice(favList.indexOf(id),1); 
+  else favList.push(id);
+}

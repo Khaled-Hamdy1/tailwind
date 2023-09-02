@@ -582,10 +582,6 @@ video {
   margin: 0.25rem;
 }
 
-.m-4 {
-  margin: 1rem;
-}
-
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -624,13 +620,12 @@ video {
   height: 3rem;
 }
 
-.h-\[50vh\] {
-  height: 50vh;
+.h-\[30vh\] {
+  height: 30vh;
 }
 
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
+.h-\[50vh\] {
+  height: 50vh;
 }
 
 .h-full {
@@ -757,6 +752,38 @@ video {
   --tw-bg-opacity: 0.5;
 }
 
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-header {
+  background-image: url('/src/images/background.jpg');
+}
+
+.from-\[\#ff0000\] {
+  --tw-gradient-from: #ff0000 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.via-\[\#ff8000\] {
+  --tw-gradient-to: rgb(255 128 0 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #ff8000 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.to-\[\#ffff00\] {
+  --tw-gradient-to: #ffff00 var(--tw-gradient-to-position);
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-clip-text {
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
 .fill-white {
   fill: #fff;
 }
@@ -873,6 +900,10 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-transparent {
+  color: transparent;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -943,6 +974,10 @@ body {
   display: flex;
 }
 
+.liked {
+  color:red;
+}
+
 .hover\:text-green-600:hover {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
@@ -951,4 +986,31 @@ body {
 .hover\:brightness-75:hover {
   --tw-brightness: brightness(.75);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+@media (min-width: 640px) {
+  .sm\:tracking-normal {
+    letter-spacing: 0em;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-\[40vh\] {
+    height: 40vh;
+  }
+
+  .md\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .md\:tracking-\[20px\] {
+    letter-spacing: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:tracking-\[50px\] {
+    letter-spacing: 50px;
+  }
 }
