@@ -14,18 +14,24 @@ async function renderData(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    let str =""
+    let str = "";
     result.photos.forEach((photo) => {
-      str += `
+      str = `
       <div class="relative mb-4 w-fit bg-slate-900 rounded-lg shadow-xl item">
         <div
           class="flex gap-2 absolute flex-row-reverse right-2 top-2 image-buttons"
         >
           <button
           onclick = pressLike(${photo.id})
+          id = "like-btn${photo.id}"
             class="w-10 h-10 flex items-center justify-center rounded-lg bg-white text-lg like-btn"
-          >
-            <i class="fa-regular fa-heart like-icon"></i>
+          >${
+            (JSON.parse(localStorage.getItem("favList")) || []).includes(
+              photo.id
+            )
+              ? '<i class="fa-solid fa-heart text-red-700"></i>'
+              : '<i class="fa-regular fa-heart"></i>'
+          }
           </button>
         </div>
         <div>
@@ -33,12 +39,24 @@ async function renderData(url) {
           loading="lazy"
           src="${photo.src.original}"
           srcset="
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=150&amp;lazy=load   150w,
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=300&amp;lazy=load   300w,
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;lazy=load   400w,
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=600&amp;lazy=load   600w,
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;lazy=load   800w,
-              ${photo.src.original}?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;lazy=load 1200w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=150&amp;lazy=load   150w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=300&amp;lazy=load   300w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;lazy=load   400w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=600&amp;lazy=load   600w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;lazy=load   800w,
+              ${
+                photo.src.original
+              }?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;lazy=load 1200w,
             "
           alt="${photo.alt}"
           class="object-cover rounded-lg"
@@ -53,6 +71,7 @@ async function renderData(url) {
         </div>
       </div>
       `;
+      console.log(str);
     });
     photos.innerHTML += str;
     if (url === Home_URL) Home_URL = result.next_page;
@@ -100,6 +119,11 @@ searchBtn.addEventListener("click", (e) => {
 function pressLike(id) {
   const favList = JSON.parse(localStorage.getItem("favList")) || [];
   const favListFilter = favList.filter((item) => item !== id);
-  if (favList.length === favListFilter.length) favListFilter.push(id);
+  if (favList.length === favListFilter.length) {
+    favListFilter.push(id)
+    document.querySelector(`#like-btn${id}`).innerHTML = '<i class="fa-solid fa-heart text-red-700"></i>';
+  }else {
+    document.querySelector(`#like-btn${id}`).innerHTML = '<i class="fa-regular fa-heart"></i>';
+  };
   localStorage.setItem("favList", JSON.stringify(favListFilter));
 }

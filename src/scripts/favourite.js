@@ -16,15 +16,15 @@ async function fetchMultipleData() {
     let str =""
     results.forEach((photo) => {
       str += `
-      <div class="relative mb-4 w-fit bg-slate-900 rounded-lg shadow-xl item">
+      <div class="relative mb-4 w-fit rounded-lg shadow-xl item">
         <div
           class="flex gap-2 absolute flex-row-reverse right-2 top-2 image-buttons"
         >
           <button
-          onclick = pressLike(${photo.id})
+          onclick = removeFav(${photo.id})
             class="w-10 h-10 flex items-center justify-center rounded-lg bg-white text-lg like-btn"
           >
-            <i class="fa-regular fa-heart like-icon"></i>
+            <i class="fa-solid fa-heart text-red-700"></i>
           </button>
         </div>
         <div>
@@ -63,3 +63,11 @@ window.addEventListener("load", () => {
   photos.innerHTML = "";
   fetchMultipleData();
 });
+
+function removeFav(id) {
+  const favList = JSON.parse(localStorage.getItem("favList")) || [];
+  const favListFiltered = favList.filter((favId) => favId !== id);
+  localStorage.setItem("favList", JSON.stringify(favListFiltered));
+  photos.innerHTML = "";
+  fetchMultipleData();
+}
