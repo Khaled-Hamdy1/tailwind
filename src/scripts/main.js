@@ -110,7 +110,7 @@ searchBtn.addEventListener("click", (e) => {
   home = false;
   if (search_URL === "https://api.pexels.com/v1/search") {
     photos.innerHTML = "";
-    renderData(`${search_URL}?query=${searchInput.value}&per_page=2`);
+    renderData(`${search_URL}?query=${searchInput.value}&per_page=30`);
   } else renderData(search_URL);
   console.log(searchInput.value);
 });
