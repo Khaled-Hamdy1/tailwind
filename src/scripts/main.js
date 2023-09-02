@@ -14,8 +14,9 @@ async function renderData(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    result.photos.forEach((photo,idx) => {
-      photos.innerHTML += `
+    let str =""
+    result.photos.forEach((photo) => {
+      str += `
       <div class="relative mb-4 w-fit bg-slate-900 rounded-lg shadow-xl item">
         <div
           class="flex gap-2 absolute flex-row-reverse right-2 top-2 image-buttons"
@@ -53,6 +54,7 @@ async function renderData(url) {
       </div>
       `;
     });
+    photos.innerHTML += str;
     if (url === Home_URL) Home_URL = result.next_page;
     else search_URL = result.next_page;
     url = result.next_page;
@@ -94,9 +96,10 @@ searchBtn.addEventListener("click", (e) => {
   console.log(searchInput.value);
 });
 //////////////////////like button/////////////////////////////
-const favList = localStorage.getItem("favList")||[];
 
 function pressLike(id) {
-  if(favList.includes(id)) favList.splice(favList.indexOf(id),1); 
-  else favList.push(id);
+  const favList = JSON.parse(localStorage.getItem("favList")) || [];
+  const favListFilter = favList.filter((item) => item !== id);
+  if (favList.length === favListFilter.length) favListFilter.push(id);
+  localStorage.setItem("favList", JSON.stringify(favListFilter));
 }
